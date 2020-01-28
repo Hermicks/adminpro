@@ -4,7 +4,10 @@ import { NgModule } from '@angular/core';
 import { PAGES_ROUTES } from './pages.routes';
 
 // Módulos
+import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
+import { ComponentsModule } from '../components/components.module';
 
 // Componentes del módulo Pages
 import { PagesComponent } from './pages.component';
@@ -27,7 +30,10 @@ import { Graficas1Component } from './graficas1/graficas1.component';
   ],
   imports: [
     PAGES_ROUTES,
-    SharedModule
+    FormsModule,
+    ChartsModule,
+    SharedModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }
