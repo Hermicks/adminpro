@@ -5,7 +5,11 @@ import { NgModule } from '@angular/core';
 import { APP_ROUTES } from './app.routes';
 
 // Módulos
+import { FormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
+
+// Services
+import { ServiceModule } from './services/service.module';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -20,8 +24,10 @@ import { RegisterComponent } from './login/register.component';
   ],
   imports: [
     BrowserModule,
+    APP_ROUTES,
+    FormsModule,
     PagesModule,
-    APP_ROUTES
+    ServiceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

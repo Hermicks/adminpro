@@ -14,19 +14,15 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
     DashboardComponent,
     ProgressComponent,
-    Graficas1Component
-  ],
-  exports: [
-    PagesComponent,
-    DashboardComponent,
-    ProgressComponent,
-    Graficas1Component
+    Graficas1Component,
+    AccountSettingsComponent
   ],
   imports: [
     PAGES_ROUTES,
