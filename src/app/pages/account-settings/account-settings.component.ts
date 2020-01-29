@@ -29,7 +29,7 @@ export class AccountSettingsComponent implements OnInit {
   applyCheckWhenRefresh(): void {
     this.removeCheck();
     const selectors: any = this.getSelectorElements();
-    const theme: string = this.settingsService.adjustments. theme;
+    const theme: string = this.settingsService.adjustments.theme;
     for (const ref of selectors) {
       if (ref.getAttribute('data-theme') === theme) {
         ref.classList.add('working');
