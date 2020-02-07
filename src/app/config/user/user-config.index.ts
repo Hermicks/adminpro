@@ -2,7 +2,7 @@
 export const USER_SERVICES = {
   getUser: '',
   postUser: '/usuario',
-  putUser: '',
+  putUser: '/usuario',
   deleteUser: ''
 };
 

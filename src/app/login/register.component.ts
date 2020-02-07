@@ -53,6 +53,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       {
         validators: this.notEquals('password', 'confirmPassword')
     });
+    /*
     this.form.setValue({
       name: 'Test1',
       email: 'test1@gmail.com',
@@ -60,6 +61,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       confirmPassword: '123456',
       conditions: false
     });
+    */
   }
 
   notEquals(value1: string, value2: string): any {
@@ -86,7 +88,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     // Post y subscripción del usuario
     this.subscription = this.userService.postUser(user).subscribe(
       (postedUser) => {
-        console.log(postedUser);
         this.router.navigate(['/login']);
       },
       (error) => {

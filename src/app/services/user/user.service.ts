@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UploadImageService } from '../upload-img/upload-image.service';
 import swal from 'sweetalert';
 
 // Config
@@ -23,7 +24,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private uploadImageService: UploadImageService
   ) {
     this.loadStorage();
   }
@@ -108,5 +110,38 @@ export class UserService {
           return resp.userStored;
         })
       );
+  }
+
+  putUser(user: User): Observable<any> {
+    // Concatenamos el token
+    const URL: string = URL_SERVICES + USER_SERVICES.putUser + '/' + user._id + '?token=' + this.token;
+    return this.http.put(URL, user, { headers: this.getHeaders() })
+    .pipe(
+      map((resp: any) => {
+        const userUpdated: User = resp.userUpdated;
+        this.saveIntoStorage(userUpdated._id, this.token, userUpdated);
+        swal('Usuario actualizado', resp.userUpdated.nombre, 'success');
+        return true;
+      })
+    );
+  }
+
+  changeImg(file: File, id: string) {
+    this.uploadImageService.uploadFile(file, 'usuarios', id)
+    .then(
+      (resp: any) => {
+        // Actualizamos la nueva imagen
+        this.user.img = resp.userUpdated.img;
+        // Alerta de éxito
+        swal('Avatar actualizado', this.user.nombre, 'success');
+        // Persistimos datos en localStorage
+        this.saveIntoStorage(id, this.token, this.user);
+      }
+    )
+    .catch(
+      (resp) => {
+        console.log(resp);
+      }
+    );
   }
 }

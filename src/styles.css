@@ -1,7 +1,13 @@
 #themecolors a {
   cursor: pointer;
 }
-
 .pointer {
   cursor: pointer;
+}
+.w150 {
+  margin-bottom: 5px;
+  width: 150px;
+}
+.alignCenter {
+  text-align: center;
 }

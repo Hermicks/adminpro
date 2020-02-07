@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 
 // Módules
 import { RouterModule } from '@angular/router';
+// El CommonModule se encarga de directivas básicas como el NgIf o NgFor
 import { CommonModule } from '@angular/common';
+
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
 
 // Componentes del módulo Shared
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
@@ -13,7 +17,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 @NgModule({
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    PipesModule
   ],
   declarations: [
     BreadcrumbsComponent,

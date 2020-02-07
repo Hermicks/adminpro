@@ -1,0 +1,73 @@
+<div class="row animated fadeIn">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Perfil del usuario</h4>
+        <h6 class="card-subtitle">Edita tus datos personales</h6>
+        <form ngNativeValidate #profileForm="ngForm" (ngSubmit)="updateUser(profileForm.value)" class="form p-t-20">
+          <div class="form-group">
+            <label for="exampleInputuname">Nombre de usuario</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre de usuario"
+                [ngModel]="user.nombre"
+                name="nombre"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Correo electrónico"
+                [ngModel]="user.email"
+                [disabled]="user.google"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success btn-block waves-effect waves-light m-r-10"
+          >
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body alignCenter">
+        <h4 class="card-title">Fotografía del usuario</h4>
+        <h6 class="card-subtitle">Edita tu imagen de perfil</h6>
+        <!-- Un atributo nativo de HTML tiene sus características propias, pero si creamos uno
+        a mano, practicamente podemos añadirle lo que queramos -->
+        <img *ngIf="!temporaryImg" [src]="user.img | imagen" class="w150" />
+        <img *ngIf="temporaryImg" [src]="temporaryImg" class="w150" />
+        <input type="file" (change)="selectImg($event.target.files[0])"/>
+        <br />
+        <br />
+        <!-- La propiedad block en el botón lo estira -->
+        <button
+          type="button"
+          class="btn btn-success btn-block waves-effect waves-light m-r-10"
+          (click)="changeImg()"
+          [disabled]="!imgToUpload"
+        >
+          <i class="fa fa-save"></i>
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
