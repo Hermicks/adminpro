@@ -28,11 +28,9 @@ export class UploadImageService {
         if (xhr.readyState === 4) {
           // Comprobamos que nos devuelva un 200 para verificar que todo ha ido bien
           if (xhr.status === 200) {
-            console.log('Imagen subida');
             // Datos de la respuesta de la petición
             resolve(JSON.parse(xhr.response));
           } else {
-            console.log('Fallo en la subida');
             reject(JSON.parse(xhr.response));
           }
         }

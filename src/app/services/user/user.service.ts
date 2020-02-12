@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchAll } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UploadImageService } from '../upload-img/upload-image.service';
 import swal from 'sweetalert';
@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import { URL_SERVICES } from '../../config/config';
 import { USER_SERVICES } from '../../config/user/user-config.index';
 import { LOGIN_SERVICES } from '../../config/login/login-config.index';
+import { SEARCH_SERVICES } from '../../config/search/search-config.index';
 
 // Models
 import { User } from '../../models/user.model';
@@ -101,6 +102,11 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
+  getUsers(from: number = 0): Observable<any> {
+    const URL: string = URL_SERVICES + USER_SERVICES.getUser + '?from=' + from;
+    return this.http.get(URL, { headers: this.getHeaders() });
+  }
+
   postUser(user: User): Observable<any> {
     const URL: string = URL_SERVICES + USER_SERVICES.postUser;
     return this.http.post(URL, user, { headers: this.getHeaders() })
@@ -118,11 +124,38 @@ export class UserService {
     return this.http.put(URL, user, { headers: this.getHeaders() })
     .pipe(
       map((resp: any) => {
-        const userUpdated: User = resp.userUpdated;
-        this.saveIntoStorage(userUpdated._id, this.token, userUpdated);
+        if (this.user._id === user._id) {
+          const userUpdated: User = resp.userUpdated;
+          this.saveIntoStorage(userUpdated._id, this.token, userUpdated);
+        }
         swal('Usuario actualizado', resp.userUpdated.nombre, 'success');
         return true;
       })
+    );
+  }
+
+  searchUser(value: string): Observable<User[]> {
+    const URL: string = URL_SERVICES + SEARCH_SERVICES.specificSearch + '/usuario/' + value;
+    return this.http.get(URL, { headers: this.getHeaders() })
+    .pipe(
+      map(
+        (resp: any) => {
+          return resp.usuario;
+        }
+      )
+    );
+  }
+
+  deleteUser(id: string): Observable<any> {
+    const URL: string  = URL_SERVICES + USER_SERVICES.deleteUser + '/' + id + '?token=' + this.token;
+    return this.http.delete(URL, { headers: this.getHeaders() })
+    .pipe(
+      map(
+        (resp: any) => {
+          swal('Usuario eliminado', 'Ha eliminado al usuario ' + id, 'success');
+          return true;
+        }
+      )
     );
   }
 

@@ -1,8 +1,8 @@
 // User services
 export const USER_SERVICES = {
-  getUser: '',
+  getUser: '/usuario',
   postUser: '/usuario',
   putUser: '/usuario',
-  deleteUser: ''
+  deleteUser: '/usuario'
 };
 

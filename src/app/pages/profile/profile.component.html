@@ -51,7 +51,7 @@
         <h4 class="card-title">Fotografía del usuario</h4>
         <h6 class="card-subtitle">Edita tu imagen de perfil</h6>
         <!-- Un atributo nativo de HTML tiene sus características propias, pero si creamos uno
-        a mano, practicamente podemos añadirle lo que queramos -->
+        a mano, practicamente podemos añadirle lo que queramos. [SRC] -->
         <img *ngIf="!temporaryImg" [src]="user.img | imagen" class="w150" />
         <img *ngIf="temporaryImg" [src]="temporaryImg" class="w150" />
         <input type="file" (change)="selectImg($event.target.files[0])"/>
