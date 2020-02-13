@@ -12,17 +12,20 @@ import { PipesModule } from '../pipes/pipes.module';
 import { IncrementadorComponent } from './incrementador/incrementador.component';
 import { GraficoDonutComponent } from './grafico-donut/grafico-donut.component';
 import { ModalUploadComponent } from './modal-upload/modal-upload.component';
+import { SearchByTypeComponent } from './search-by-type/search-by-type.component';
 
 @NgModule({
   declarations: [
     IncrementadorComponent,
     GraficoDonutComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    SearchByTypeComponent
   ],
   exports: [
     IncrementadorComponent,
     GraficoDonutComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    SearchByTypeComponent
   ],
   imports: [
     CommonModule,

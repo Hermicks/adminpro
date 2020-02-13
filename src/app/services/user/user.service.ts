@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, switchAll } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UploadImageService } from '../upload-img/upload-image.service';
 import swal from 'sweetalert';
@@ -152,7 +152,7 @@ export class UserService {
     .pipe(
       map(
         (resp: any) => {
-          swal('Usuario eliminado', 'Ha eliminado al usuario ' + id, 'success');
+          swal('Usuario eliminado', 'Ha eliminado al usuario ' + resp.userDeleted.nombre, 'success');
           return true;
         }
       )

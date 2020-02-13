@@ -7,8 +7,20 @@ import { HttpClientModule } from '@angular/common/http';
 // Modal service to connect modal component and other components
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
+// Search by type service to connect components of maintenance
+import { SearchByTypeService } from '../components/search-by-type/search-by-type.service';
+
 // Services from Service module
-import { SettingsService, SharedService, SidebarService, UserService, LoginGuard, UploadImageService } from './services.index';
+import {
+  SettingsService,
+  SharedService,
+  SidebarService,
+  UserService,
+  HospitalService,
+  DoctorService,
+  LoginGuard,
+  UploadImageService
+} from './services.index';
 
 @NgModule({
   declarations: [],
@@ -21,9 +33,12 @@ import { SettingsService, SharedService, SidebarService, UserService, LoginGuard
     SharedService,
     SidebarService,
     UserService,
+    HospitalService,
+    DoctorService,
     LoginGuard,
     UploadImageService,
-    ModalUploadService
+    ModalUploadService,
+    SearchByTypeService
   ]
 })
 export class ServiceModule { }

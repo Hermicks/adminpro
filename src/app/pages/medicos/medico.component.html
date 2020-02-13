@@ -1,0 +1,76 @@
+<div class="row animted fadeIn">
+  <div class="col-md-6">
+    <div class="card card-body">
+      <h3 class="box-title m-b-0" *ngIf="doctor.nombre">Médico: {{ doctor.nombre }}</h3>
+      <p class="text-muted m-b-30 font-13">Datos personales</p>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <form
+            #doctorForm="ngForm"
+            ngNativeValidate
+            (ngSubmit)="validateDoctor(doctorForm)"
+          >
+            <div class="form-group">
+              <label>User Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre del médico"
+                [(ngModel)]="doctor.nombre"
+                name="nombre"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Hospital</label>
+              <select
+                (change)="changeHospital($event.target.value)"
+                name="hospitals"
+                class="form-control"
+                [(ngModel)]="doctor.hospital"
+                name="hospital"
+                required
+              >
+                <option value="">Seleccione un hospital</option>
+                <option
+                  *ngFor="let hospital of hospitals"
+                  [value]="hospital._id"
+                  >{{ hospital.nombre }}</option
+                >
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success waves-effect waves-light m-r-10"
+            >
+              <i class="fa fa-save"></i>
+              Guardar
+            </button>
+            <a
+              routerLink="/medicos"
+              class="btn btn-inverse waves-effect waves-light"
+            >
+              Cancelar
+          </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Imagen del hospital seleccionado -->
+  <div class="col-md-3" *ngIf="hospital._id">
+    <div class="card card-body">
+      <h4 class="box-title m-b-0">Hospital</h4>
+      <img
+        [src]="hospital.img | imagen: 'hospitales'"
+        class="img-fluid rounded"
+      />
+    </div>
+  </div>
+  <div class="col-md-3" *ngIf="doctor._id">
+    <div class="card card-body">
+      <h4 class="box-title m-b-0">Fotografía</h4>
+      <img [src]="doctor.img | imagen: 'medicos'" class="img-circle img-fluid pointer" (click)="showModal(doctor._id)" />
+    </div>
+  </div>
+</div>
