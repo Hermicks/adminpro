@@ -6,15 +6,12 @@ import { PAGES_ROUTES } from './pages.routes';
 // Módulos
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
-import { SharedModule } from '../shared/shared.module';
-import { ComponentsModule } from '../components/components.module';
 import { CommonModule } from '@angular/common';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
 
 // Componentes del módulo Pages
-import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
@@ -28,9 +25,17 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { SearchComponent } from './search/search.component';
 
+// Incrementador
+import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+// Gráfico de donut
+import { GraficoDonutComponent } from '../components/grafico-donut/grafico-donut.component';
+// SearchByType
+import { SearchByTypeComponent } from '../components/search-by-type/search-by-type.component';
+// Loading
+import { LoadingComponent } from '../components/loading/loading.component';
+
 @NgModule({
   declarations: [
-    PagesComponent,
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
@@ -42,14 +47,16 @@ import { SearchComponent } from './search/search.component';
     HospitalesComponent,
     MedicosComponent,
     MedicoComponent,
-    SearchComponent
+    SearchComponent,
+    IncrementadorComponent,
+    GraficoDonutComponent,
+    SearchByTypeComponent,
+    LoadingComponent
   ],
   imports: [
     PAGES_ROUTES,
     FormsModule,
     ChartsModule,
-    SharedModule,
-    ComponentsModule,
     CommonModule,
     PipesModule
   ]

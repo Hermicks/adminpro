@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // Módules
 import { RouterModule } from '@angular/router';
-// El CommonModule se encarga de directivas básicas como el NgIf o NgFor
-import { CommonModule } from '@angular/common';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
@@ -13,7 +12,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoadingComponent } from './loading/loading.component';
+
+// ModalUpload
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
   imports: [
@@ -26,14 +27,14 @@ import { LoadingComponent } from './loading/loading.component';
     HeaderComponent,
     NoPageFoundComponent,
     SidebarComponent,
-    LoadingComponent
+    ModalUploadComponent
   ],
   exports: [
     BreadcrumbsComponent,
     HeaderComponent,
     NoPageFoundComponent,
     SidebarComponent,
-    LoadingComponent
+    ModalUploadComponent
   ]
 })
 export class SharedModule { }
