@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Rutas
-import { APP_ROUTES } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 // Módulos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +28,7 @@ import { PagesComponent } from './pages/pages.component';
   ],
   imports: [
     BrowserModule,
-    APP_ROUTES,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,

@@ -1,4 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
@@ -20,4 +21,10 @@ const appRoutes: Routes = [
   { path: '**', component: NoPageFoundComponent }
 ];
 
-export const APP_ROUTES = RouterModule.forRoot(appRoutes, { useHash: true });
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

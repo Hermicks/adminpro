@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 // Rutas
-import { PAGES_ROUTES } from './pages.routes';
+import { PagesRoutingModule } from './pages-routing.module';
 
 // Módulos
 import { FormsModule } from '@angular/forms';
@@ -54,7 +54,7 @@ import { LoadingComponent } from '../components/loading/loading.component';
     LoadingComponent
   ],
   imports: [
-    PAGES_ROUTES,
+    PagesRoutingModule,
     FormsModule,
     ChartsModule,
     CommonModule,
