@@ -9,3 +9,4 @@ export { UploadImageService } from './upload-img/upload-image.service';
 // Guards
 export { LoginGuard } from './guards/login.guard';
 export { AdminGuard } from './guards/admin.guard';
+export { VerifyTokenGuard } from './guards/verify-token.guard';

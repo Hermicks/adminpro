@@ -16,9 +16,10 @@ import { SearchComponent } from './search/search.component';
 
 // Guards
 import { AdminGuard } from '../services/services.index';
+import { VerifyTokenGuard } from '../services/guards/verify-token.guard';
 
 const pagesRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+  { path: 'dashboard', canActivate: [VerifyTokenGuard], component: DashboardComponent, data: { title: 'Dashboard' } },
   { path: 'progress', component: ProgressComponent, data: { title: 'Progress' } },
   { path: 'graficas1', component: Graficas1Component, data: { title: 'Gráficas' } },
   { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings' } },

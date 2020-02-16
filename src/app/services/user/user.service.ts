@@ -32,6 +32,29 @@ export class UserService {
     this.loadStorage();
   }
 
+  renewToken(): Observable<any> {
+    // Llamamos al URL de renovación de token
+    const URL: string = URL_SERVICES + LOGIN_SERVICES.renewToken + '?token=' + this.token;
+    return this.http.get(URL, { headers: this.getHeaders() })
+      .pipe(
+        map(
+          (resp: any) => {
+            // Actualizo datos
+            this.token = resp.token;
+            this.saveIntoStorage(this.user._id, this.token, this.user, this.menu);
+            return true;
+          }
+        ),
+        catchError(err => {
+          this.logOut();
+          this.router.navigate(['/login']);
+          swal('No se pudo renovar el token', 'Imposible renovar el token', 'error');
+          return throwError(err);
+        })
+      );
+
+  }
+
   getHeaders(): HttpHeaders {
     return new HttpHeaders()
       .set('Content-type', 'application/json');
